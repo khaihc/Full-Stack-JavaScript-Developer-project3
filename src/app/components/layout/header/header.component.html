@@ -2,9 +2,12 @@
     <h1 class="p-mb-2">My Store Project</h1>
     <hr class="p-mt-1 p-mb-1" style="border-color: #ffffff;">
     <div class="menu-container p-d-flex p-jc-around p-ai-center" style="width: 100%;">
-        <div class="menu-option p-p-2 p-flex-1">Products</div>
+
+        <div class="menu-option p-p-2 p-flex-1" [routerLink]="['/product']">Products</div>
+        
         <div class="vertical-line" style="margin: 0 10px;"></div>
-        <div class="menu-option p-d-flex p-ai-center p-flex-1">
+
+        <div class="menu-option p-d-flex p-ai-center p-flex-1"  [routerLink]="['/cart']">
             <span style="color:red;">1</span>
             <span class="p-ml-1">Cart</span>
         </div>

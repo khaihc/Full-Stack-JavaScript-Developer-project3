@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Full-Stack-JavaScript-Developer-project3": {
+    "udacity-fullstack-project-3": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/full-stack-java-script-developer-project3",
+            "outputPath": "dist/udacity-fullstack-project-3",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -25,6 +25,8 @@
               "src/assets"
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -60,10 +62,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "Full-Stack-JavaScript-Developer-project3:build:production"
+              "browserTarget": "udacity-fullstack-project-3:build:production"
             },
             "development": {
-              "browserTarget": "Full-Stack-JavaScript-Developer-project3:build:development"
+              "browserTarget": "udacity-fullstack-project-3:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -71,7 +73,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Full-Stack-JavaScript-Developer-project3:build"
+            "browserTarget": "udacity-fullstack-project-3:build"
           }
         },
         "test": {
@@ -87,6 +89,7 @@
               "src/assets"
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -96,6 +99,6 @@
     }
   },
   "cli": {
-    "analytics": "08b43356-ec8b-4142-b622-3adc5ae34f18"
+    "analytics": "4208906d-1edf-42d5-84ad-e0c6a74764b4"
   }
 }
