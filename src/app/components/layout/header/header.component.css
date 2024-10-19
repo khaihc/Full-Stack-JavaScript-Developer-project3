@@ -1,0 +1,27 @@
+.header {
+    text-align: center;
+    background: #33B5E5;
+    color: #fff;
+    padding: 12px;
+}
+
+a {
+    color: #ffffff;
+}
+
+/* Updated class names */
+.menu-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.menu-option {
+    width: 50%;
+    cursor: pointer;
+}
+
+.vertical-line {
+    border-left: 2px solid #ffffff;
+    height: 30px;
+}
