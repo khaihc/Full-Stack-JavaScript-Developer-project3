@@ -3,20 +3,21 @@
         <div class="cart-item">
             <app-cart-item></app-cart-item>
         </div>
-        <h2>Total: $ 4</h2>
+        <h2>Total: $ {{ (cart?.total || 0) | number: '1.2-2' }} </h2>
     </div>
     <div class="form-container">
-        <form>
+        <form #form="ngForm" (ngSubmit)="handleSubmit()">
             <label for="fullName">Full name</label>
             <input placeholder="Minimun is 3 characters" type="text" name="fullName" required minlength="3"
-                class="input-text" />
+                class="input-text" [(ngModel)]="fullName" />
             <label for="address">Address</label>
             <input placeholder="Minimun is 6 characters" type="text" name="address" required minlength="6"
-                class="input-text" />
+                class="input-text" [(ngModel)]="address" />
             <label for="card">Credit card</label>
             <input placeholder="Minimun is 16 characters" class="input-text" type="number" name="card" required
-                minlength="16"  />
-            <button  type="submit">
+                minlength="16" [(ngModel)]="creditCard" />
+            <span class="text-annouce">We will never share you payment details with anyone else</span>
+            <button [disabled]="form.invalid" type="submit" [ngClass]="form.invalid ? '' : 'button-add-cart'">
                 Submit
             </button>
         </form>

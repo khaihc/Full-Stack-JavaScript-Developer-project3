@@ -23,9 +23,6 @@ export class ProductItemDetailComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    console.log("productId: ", this.productId);
-    
-    // Lấy selectOptions từ productService
     this.selectOptions = this.productService.selectOptions;
 
     this.subscription.add(
@@ -39,6 +36,17 @@ export class ProductItemDetailComponent implements OnInit, OnDestroy {
         }
       )
     );
+  }
+
+  updateQuantity(event: any, productId: number): void {
+    const selectElement = event.target as HTMLSelectElement;
+    const newQuantity = parseInt(selectElement.value);
+    this.productService.updateQuantity(productId, newQuantity -1);
+  }
+
+  addToCart(product: Product): void {
+    this.productService.addToCart(product);
+    alert('Add Product to Cart , Please clicking to cart to review')
   }
 
   ngOnDestroy(): void {

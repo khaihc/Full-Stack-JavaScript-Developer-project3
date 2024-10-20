@@ -9,14 +9,14 @@
     <p>${{ product.price | number: '1.2-2' }}</p>
     <p>Description: {{ product.description }}</p>
     
-    <select class="select-input">
+    <select class="select-input" (change)="updateQuantity($event, product.id)">
       <option *ngFor="let option of selectOptions" [value]="option.value">
-        {{ option.label }}
+        {{ option.value }}
       </option>
     </select>
 
     <div style="margin-top: 10px">
-      <button class="btn btn-primary" type="button">Add To Cart</button>
+      <button class="btn btn-primary" type="button" (click)="addToCart(product)">Add To Cart</button>
       <div class="back-link" [routerLink]="['/product']">Back to products</div>
     </div>
   </div>
@@ -24,8 +24,7 @@
 
 <ng-template #notFound>
   <div class="loading-message">
-    <i class="fa fa-spinner fa-spin loading-icon"></i>
-    Product not found.
+    <i class="fa fa-spinner fa-spin loading-icon"></i>Product not found.
     <div class="back-link" [routerLink]="['/product']">Back to products</div>
   </div>
 </ng-template>

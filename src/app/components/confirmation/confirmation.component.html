@@ -1,0 +1,10 @@
+<div class="confirmation-container">
+    <div class="confirmation-item">
+        <h3 class="confirmation-header">Success!</h3>
+        <span>Thank you, <b>{{fullName}}</b></span><br>
+        <span class="confirmation-item">Your <b>${{totalPrice | number: '1.2-2'}}</b> order is confirmed</span><br>
+        <span class="confirmation-item">Please allow <b> 1-3 business day(s)</b> for shiping</span>
+        <br>
+        <button class="btn btn-primary" mat-raised-button (click)="toProductList()">Back to product list</button>
+    </div>
+</div>

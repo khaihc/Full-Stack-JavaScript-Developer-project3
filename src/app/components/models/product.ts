@@ -6,9 +6,14 @@ export default class Product {
     description: string
     constructor() {
         this.id = 1,
-            this.name = '',
-            this.price = 0,
-            this.url = '',
-            this.description = ''
+        this.name = '',
+        this.price = 0,
+        this.url = '',
+        this.description = ''
     }
+}
+
+export interface Cart {
+    products: Product[];
+    total: number;
 }
