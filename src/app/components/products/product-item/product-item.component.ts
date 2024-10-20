@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import Product from '../../models/product';
 import { Router } from '@angular/router';
+import { ProductService } from '../../services/product.service';
 
 @Component({
   selector: 'app-product-item',
@@ -10,20 +11,14 @@ import { Router } from '@angular/router';
 export class ProductItemComponent {
   @Input() product: Product = new Product();
 
-  selectOptions = [
-    {option: "Option 1", value: 1},
-    {option: "Option 2", value: 2},
-    {option: "Option 3", value: 3},
-    {option: "Option 4", value: 4},
-    {option: "Option 5", value: 5}
-  ]
+  selectOptions = this.productService.selectOptions;
 
   constructor(
-    private router: Router) { 
-  }
+    private router: Router,
+    private productService: ProductService
+  ) { }
 
   ngOnInit(): void {
-    console.log("-----------product-----------", this.product)
   }
 
   productDetail(id: number): void {

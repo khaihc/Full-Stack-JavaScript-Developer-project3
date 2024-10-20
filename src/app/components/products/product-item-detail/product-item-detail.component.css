@@ -25,3 +25,33 @@ img {
     color: blue;
     cursor: pointer;
 }
+
+.loading-message, .not-found-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-size: 1.5em;
+    color: #333;
+}
+
+.loading-icon{
+    font-size: 2em;
+    margin-bottom: 10px;
+    color: #007bff;
+}
+
+.back-link {
+    margin-top: 20px;
+    text-decoration: none;
+    color: #007bff;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.back-link:hover {
+    color: #0056b3;
+    text-decoration: underline; 
+}

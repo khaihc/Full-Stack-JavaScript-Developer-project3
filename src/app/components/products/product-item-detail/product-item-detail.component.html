@@ -1,22 +1,31 @@
-<div class="detail-container">
-      <img
-        class="product-image"
-        src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-        alt="product-detail-image"
-      />
-      <div class="detail-item">
-        <h3>Book</h3>
-        <p>$ 9.99</p>
-        <p>Description: You can read it!</p>
-        <select class="select-input">
-          <option *ngFor="let option of selectOptions" [value]="option.value">
-            {{ option.value }}
-          </option>
-        </select>
-        <div style="margin-top: 10px">
-          <button class="btn btn-primary"> Add To Cart </button>
-          <div class="back-link" [routerLink]="['/product']">Back to products</div>
-        </div>
-      </div>
+<div class="detail-container" *ngIf="product; else notFound">
+  <img
+    class="product-image"
+    [src]="product.url"
+    [alt]="product.name + ' image'"
+  />
+  <div class="detail-item">
+    <h3>{{ product.name }}</h3>
+    <p>${{ product.price | number: '1.2-2' }}</p>
+    <p>Description: {{ product.description }}</p>
+    
+    <select class="select-input">
+      <option *ngFor="let option of selectOptions" [value]="option.value">
+        {{ option.label }}
+      </option>
+    </select>
+
+    <div style="margin-top: 10px">
+      <button class="btn btn-primary" type="button">Add To Cart</button>
+      <div class="back-link" [routerLink]="['/product']">Back to products</div>
+    </div>
   </div>
-  
+</div>
+
+<ng-template #notFound>
+  <div class="loading-message">
+    <i class="fa fa-spinner fa-spin loading-icon"></i>
+    Product not found.
+    <div class="back-link" [routerLink]="['/product']">Back to products</div>
+  </div>
+</ng-template>

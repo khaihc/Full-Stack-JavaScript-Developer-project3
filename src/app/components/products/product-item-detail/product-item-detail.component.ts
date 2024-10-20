@@ -1,28 +1,47 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ProductService } from '../../services/product.service';
+import { Subscription } from 'rxjs';
+import Product from '../../models/product';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-product-item-detail',
   templateUrl: './product-item-detail.component.html',
   styleUrls: ['./product-item-detail.component.css']
 })
-export class ProductItemDetailComponent {
+export class ProductItemDetailComponent implements OnInit, OnDestroy {
+  product: Product | undefined;
+  selectOptions: any[] = [];
+  productId: string | null;
+  private subscription: Subscription = new Subscription();
 
-  selectOptions = [
-    {
-      option: "Option 1",
-      value: 1
-    }, {
-      option: "Option 2",
-      value: 2
-    }, {
-      option: "Option 3",
-      value: 3
-    }, {
-      option: "Option 4",
-      value: 4
-    }, {
-      option: "Option 5",
-      value: 5
-    }
-  ]
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private productService: ProductService,
+  ) {
+    this.productId = this.activatedRoute.snapshot.params['id'] || null;
+  }
+
+  ngOnInit(): void {
+    console.log("productId: ", this.productId);
+    
+    // Lấy selectOptions từ productService
+    this.selectOptions = this.productService.selectOptions;
+
+    this.subscription.add(
+      this.productService.getProductList().subscribe(
+        (products: Product[]) => {
+          this.product = products.find((product: Product) => product.id.toString() === this.productId);
+          
+          if (!this.product) {
+            console.warn('Product not found');
+          }
+        }
+      )
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
 }

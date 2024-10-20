@@ -2,11 +2,11 @@
     <img
         [src]="product.url"
         [alt]="product.name"
-        class="product-image"
+        class="product-image clickable"
         (click)="productDetail(product.id)"
     >
-    <p class="p-mb-2">{{ product.name }}</p>
-    <p class="p-mb-2">{{ product.price }}</p>
+    <div class="p-mb-2 clickable" (click)="productDetail(product.id)">{{ product.name }}</div>
+    <p class="p-mb-2">{{ product.price | number: '1.2-2' }}</p>
     <div class="select-input">
         <select style="width: 108px;">
             <option *ngFor="let option of selectOptions" [value]="option.value">{{ option.value }}</option>
