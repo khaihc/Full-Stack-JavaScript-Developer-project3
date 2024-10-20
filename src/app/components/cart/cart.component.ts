@@ -15,6 +15,10 @@ export class CartComponent implements OnInit, OnDestroy {
   fullName: string = '';
   address: string = '';
   creditCard: string = '';
+  fullNameError: string | null = null;
+  addressError: string | null = null;
+  creditCardError: string | null = null;
+
   constructor(
     private productService: ProductService,
     private router: Router
@@ -39,6 +43,18 @@ export class CartComponent implements OnInit, OnDestroy {
     this.fullName = '';
     this.address = '';
     this.creditCard = '';
+  }
+
+  validateFullName() {
+    this.fullNameError = this.fullName.length < 3 ? 'Full name must be at least 3 characters long.' : null;
+  }
+
+  validateAddress() {
+    this.addressError = this.address.length < 6 ? 'Address must be at least 6 characters long.' : null;
+  }
+
+  validateCreditCard() {
+    this.creditCardError = this.creditCard.length < 16 ? 'Credit card number must be at least 16 digits long.' : null;
   }
 
   ngOnDestroy(): void {

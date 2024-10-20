@@ -8,14 +8,20 @@
     <div class="form-container">
         <form #form="ngForm" (ngSubmit)="handleSubmit()">
             <label for="fullName">Full name</label>
-            <input placeholder="Minimun is 3 characters" type="text" name="fullName" required minlength="3"
-                class="input-text" [(ngModel)]="fullName" />
+            <input placeholder="Minimum is 3 characters" type="text" name="fullName" required minlength="3"class="input-text" 
+                [(ngModel)]="fullName" (ngModelChange)="validateFullName()" 
+            />
+            <div *ngIf="fullNameError" class="error-message">{{ fullNameError }}</div> 
             <label for="address">Address</label>
-            <input placeholder="Minimun is 6 characters" type="text" name="address" required minlength="6"
-                class="input-text" [(ngModel)]="address" />
+            <input placeholder="Minimum is 6 characters" type="text" name="address" required minlength="6"class="input-text" 
+                [(ngModel)]="address" (ngModelChange)="validateAddress()" 
+            />
+            <div *ngIf="addressError" class="error-message">{{ addressError }}</div>
             <label for="card">Credit card</label>
-            <input placeholder="Minimun is 16 characters" class="input-text" type="number" name="card" required
-                minlength="16" [(ngModel)]="creditCard" />
+            <input placeholder="Minimum is 16 characters" class="input-text" type="number" name="card" required minlength="16" 
+                [(ngModel)]="creditCard" (ngModelChange)="validateCreditCard()" 
+            />
+            <div *ngIf="creditCardError" class="error-message">{{ creditCardError }}</div>
             <span class="text-annouce">We will never share you payment details with anyone else</span>
             <button [disabled]="form.invalid" type="submit" [ngClass]="form.invalid ? '' : 'button-add-cart'">
                 Submit
